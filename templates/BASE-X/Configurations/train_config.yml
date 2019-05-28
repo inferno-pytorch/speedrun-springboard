@@ -1,0 +1,31 @@
+device: 'cpu'
+
+data:
+  root: './data'
+
+model:
+  name: ResNet18
+  kwargs: {}
+
+optimizer:
+  name: SGD
+  kwargs:
+    lr: 0.1
+    momentum: 0.9
+    weight_decay: 0.0001
+    nesterov: true
+
+scheduler:
+  name: MultiStepLR
+  kwargs:
+    gamma: 0.1
+    milestones: [100, 150]
+
+training:
+  batch_size: 64
+  checkpoint_every: 5
+  num_epochs: 200
+
+# This is special configuration for tensorboard.
+tensorboard:
+  log_scalars_every: 10
